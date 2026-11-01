@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bobby — Systematic Hyperliquid Perps, Long & Short</title>
+<meta name="description" content="Non-custodial, systematic long + short trading on Hyperliquid perps. First month free, then $97/month.">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#07090f;--card:#0e1320;--line:#1c2436;--tx:#e7ecf5;--mu:#8a96ad;--ac:#5b8cff;--ac2:#22d3a6;--rd:#ff5d73}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6}
+a{color:inherit}.w{max-width:1120px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:9;background:rgba(7,9,15,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;justify-content:space-between;height:64px}.logo{font-weight:800;font-size:20px;letter-spacing:-.5px}.logo span{color:var(--ac2)}
+nav .links a{color:var(--mu);text-decoration:none;margin-left:22px;font-size:14px}nav .links a:hover{color:var(--tx)}
+.btn{display:inline-block;padding:13px 24px;border-radius:12px;background:linear-gradient(135deg,var(--ac),#7c5cff);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(91,140,255,.3)}
+.btn.g{background:transparent;border:1px solid var(--line);box-shadow:none}
+.hero{padding:100px 0 70px;text-align:center;background:radial-gradient(800px 400px at 50% -10%,rgba(91,140,255,.25),transparent),radial-gradient(600px 300px at 80% 20%,rgba(34,211,166,.12),transparent)}
+.pill{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:99px;color:var(--mu);font-size:13px;margin-bottom:22px}
+h1{font-size:clamp(36px,6vw,64px);line-height:1.05;letter-spacing:-2px;margin:0 0 20px}h1 em{font-style:normal;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;color:transparent}
+.sub{color:var(--mu);font-size:19px;max-width:680px;margin:0 auto 34px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.stat b{display:block;font-size:30px;letter-spacing:-1px}.stat small{color:var(--mu)}.tag{font-size:11px;color:#ffc861;text-transform:uppercase;letter-spacing:1px}
+section{padding:80px 0;border-top:1px solid var(--line)}h2{font-size:clamp(28px,4vw,40px);letter-spacing:-1px;margin:0 0 12px}.lead{color:var(--mu);max-width:700px;margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.card h3{margin:8px 0;font-size:18px}.card p{color:var(--mu);margin:0;font-size:15px}.ic{font-size:26px}
+.step b{display:inline-flex;width:34px;height:34px;border-radius:10px;align-items:center;justify-content:center;background:rgba(91,140,255,.15);color:var(--ac)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:18px}.note{font-size:13px;color:var(--mu);margin-top:14px}
+.price{max-width:460px;margin:0 auto;text-align:center;border:1px solid var(--ac);box-shadow:0 0 60px rgba(91,140,255,.15)}
+.price .amt{font-size:56px;font-weight:800;letter-spacing:-2px}.price ul{text-align:left;color:var(--mu);padding-left:20px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:12px}summary{cursor:pointer;font-weight:600}details p{color:var(--mu)}
+.risk{background:rgba(255,93,115,.07);border:1px solid rgba(255,93,115,.35);border-radius:16px;padding:22px;color:#f3c3cb;font-size:14px}
+footer{padding:40px 0;color:var(--mu);font-size:13px;border-top:1px solid var(--line)}
+@media(max-width:860px){.stats,.grid,.charts{grid-template-columns:1fr 1fr}nav .links{display:none}}@media(max-width:560px){.stats,.grid,.charts{grid-template-columns:1fr}}
+</style></head><body>
+<nav><div class="w"><div class="logo">Bobby<span>.</span></div><div class="links"><a href="#how">How it works</a><a href="#features">Features</a><a href="#results">Results</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div><a class="btn" href="https://SIGNUP_URL">Start free</a></div></nav>
+<header class="hero"><div class="w">
+<div class="pill">⚡ Systematic long + short on Hyperliquid perps</div>
+<h1>Trade both directions.<br><em>Keep custody of every dollar.</em></h1>
+<p class="sub">Bobby runs a research-hardened, two-sided perps strategy on your own Hyperliquid account through a trade-only agent wallet. Rules-based entries, hard stops on every trade, and alerts straight to your Discord.</p>
+<a class="btn" href="https://SIGNUP_URL">Start your free month</a> &nbsp; <a class="btn g" href="#results">See the backtests</a>
+<div class="stats">
+<div class="stat"><span class="tag">Backtest · walk-forward</span><b>31.5%/mo</b><small>average monthly return, simulated</small></div>
+<div class="stat"><span class="tag">Backtest · walk-forward</span><b>6.47</b><small>Sharpe ratio, simulated</small></div>
+<div class="stat"><span class="tag">Backtest · walk-forward</span><b>−9.4%</b><small>max drawdown, simulated</small></div>
+<div class="stat"><span class="tag">Holdout · unseen data</span><b>27.7%/mo</b><small>simulated on data never used in design</small></div>
+</div><p class="note">All figures are backtested/simulated, not live results. Simulated results have inherent limitations. See the risk disclosure below.</p>
+</div></header>
+
+<section id="how"><div class="w"><h2>How it works</h2><p class="lead">Three steps, and your funds never leave your account.</p>
+<div class="grid">
+<div class="card step"><b>1</b><h3>Create an agent wallet</h3><p>In Hyperliquid, generate an API/agent wallet. It can place trades but <strong>cannot withdraw</strong>.</p></div>
+<div class="card step"><b>2</b><h3>Connect it to Bobby</h3><p>Sign up, drop in your credentials file (JSON, .env, TXT, CSV, YAML and more), and add your Discord webhook.</p></div>
+<div class="card step"><b>3</b><h3>Test, then go live</h3><p>Every account starts in test mode. Flip to live when you're ready, and switch back whenever you like.</p></div>
+</div></div></section>
+
+<section id="features"><div class="w"><h2>Built like a trading desk</h2><p class="lead">The full system our research team trades with, packaged for you.</p>
+<div class="grid">
+<div class="card"><div class="ic">📈</div><h3>Long book + breakdown short</h3><p>A long trend book paired with a breakdown short on 8-hour bars, so the system can work in rising and falling markets.</p></div>
+<div class="card"><div class="ic">🎯</div><h3>Curated coin universe</h3><p>Trades a curated list of Hyperliquid perps selected through out-of-sample research, not the whole market.</p></div>
+<div class="card"><div class="ic">⚖️</div><h3>Adaptive sizing</h3><p>Position size adjusts for volatility, momentum and correlation, with a shared-margin book and a hard margin ceiling.</p></div>
+<div class="card"><div class="ic">🛡️</div><h3>Risk on every trade</h3><p>A stop on every position, breakeven at 1R, partial take-profits and trailing exits.</p></div>
+<div class="card"><div class="ic">🔐</div><h3>Non-custodial, quantum-resistant</h3><p>Trade-only keys, encrypted at rest with post-quantum encryption. Bobby never holds your funds.</p></div>
+<div class="card"><div class="ic">🔔</div><h3>Discord alerts + dashboard</h3><p>Overviews at :00 and :30, open alerts with LONG/SHORT badges, close alerts marked winner/loser, plus a live dashboard of equity, positions and history.</p></div>
+</div></div></section>
+
+<section id="results"><div class="w"><h2>The research, in numbers</h2>
+<p class="lead">We tested thousands of variants and only promote a strategy that wins out-of-sample. Adding the breakdown short raised walk-forward returns from 24.0% to 31.5%/mo and Sharpe from 5.27 to 6.47, while <em>reducing</em> max drawdown. On a holdout period never used in development it held up at 27.7%/mo. That's very encouraging, and it is still a simulation.</p>
+<div class="charts">
+<div class="card"><h3>Walk-forward return by fold (monthly avg, %)</h3><canvas id="folds" height="230"></canvas></div>
+<div class="card"><h3>Long-only vs. long + short</h3><canvas id="cmp" height="230"></canvas></div>
+</div>
+<p class="note">Source: our internal joint simulation (walk-forward over 5 folds + separate holdout, 69 holdout trades). Backtested, hypothetical results that include modeled costs but not every real-world factor (slippage, outages, liquidity). Live results will differ and may be substantially lower.</p>
+</div></section>
+
+<section id="pricing"><div class="w"><h2 style="text-align:center">Simple pricing</h2><p class="lead" style="margin:0 auto 40px;text-align:center">Try the full system for a month before you pay anything.</p>
+<div class="card price"><div class="tag">First month free</div><div class="amt">$97<small style="font-size:18px;color:var(--mu)">/month</small></div>
+<ul><li>Full long + short strategy</li><li>Test mode and live mode</li><li>Pro dashboard and Discord alerts</li><li>Non-custodial, cancel anytime</li></ul>
+<a class="btn" href="https://SIGNUP_URL">Start free month</a></div></div></section>
+
+<section id="faq"><div class="w"><h2>FAQ</h2>
+<details><summary>Can Bobby withdraw my funds?</summary><p>No. You connect a Hyperliquid agent wallet, which can trade but cannot withdraw. Main wallet keys are refused.</p></details>
+<details><summary>Are these live results?</summary><p>No. The figures shown are backtested and simulated, including a holdout on unseen data. They are not live track records and don't guarantee future performance.</p></details>
+<details><summary>Can I lose money?</summary><p>Yes. Leveraged perpetual futures are high-risk, and you can lose some or all of the capital in your account.</p></details>
+<details><summary>What happens after the free month?</summary><p>It's $97/month. If you don't subscribe, trading pauses. You can cancel anytime.</p></details>
+<details><summary>Which coins does it trade?</summary><p>A curated set of Hyperliquid perps chosen by our research. The exact list and parameters are proprietary.</p></details>
+</div></section>
+
+<section><div class="w" style="text-align:center"><h2>Ready to put the research to work?</h2><p class="lead" style="margin:0 auto 30px">Start in test mode, free for a month.</p><a class="btn" href="https://SIGNUP_URL">Get started</a>
+<div class="risk" style="margin-top:50px;text-align:left"><strong>Risk disclosure.</strong> All performance figures on this page are backtested or simulated and are not live trading results. Past and simulated performance does not guarantee future results. Simulated results have inherent limitations and may not reflect slippage, liquidity, fees, outages or changing market conditions. Trading perpetual futures with leverage is high-risk and can result in the loss of some or all of your capital. Nothing here is financial, investment or tax advice, and no returns are promised. You control your own account and funds and are solely responsible for your trading decisions. Check the rules that apply where you live before using the service.</div>
+</div></section>
+<footer><div class="w">© 2026 Bobby. Software tool only; not a broker, adviser or custodian.</div></footer>
+<script>
+Chart.defaults.color='#8a96ad';Chart.defaults.borderColor='#1c2436';
+const J=[0.30627636441447503,0.2736993736434845,0.08287540385841963,0.3672272370269183,0.21398480119708152],L=[0.2485252038512047,0.29387867461627715,0.04376131247176729,0.36928112657630985,0.025504882156363706],p=a=>a.map(x=>+(x*100).toFixed(1));
+new Chart(folds,{type:'bar',data:{labels:['Fold 1','Fold 2','Fold 3','Fold 4','Fold 5'],datasets:[{label:'Long only',data:p(L),backgroundColor:'#3a4a6e',borderRadius:6},{label:'Long + short',data:p(J),backgroundColor:'#5b8cff',borderRadius:6}]},options:{plugins:{legend:{position:'bottom'}}}});
+new Chart(cmp,{type:'bar',data:{labels:['Walk-forward %/mo','Holdout %/mo','Sharpe (WF)','Max DD % (WF)'],datasets:[{label:'Long only',data:[24.0,17.3,5.27,-10.1],backgroundColor:'#3a4a6e',borderRadius:6},{label:'Long + short',data:[31.5,27.7,6.47,-9.4],backgroundColor:'#22d3a6',borderRadius:6}]},options:{plugins:{legend:{position:'bottom'}}}});
+</script></body></html>
